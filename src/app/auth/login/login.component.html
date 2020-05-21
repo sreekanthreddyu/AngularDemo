@@ -1,0 +1,77 @@
+
+<!-- Will use Reactive form approach for the login form
+unlike angular template model used for signup form -->
+<!-- Refer the below commented code at bottom for template type approach -->
+
+
+<!-- Reactive form approach where validations are written in typescript file -->
+<section class="Login-form">
+<form fxLayout="column"
+[formGroup]="loginForm"
+fxLayoutAlign="center center"
+ fxLayoutGap="20px"
+ (ngSubmit)="onSubmit()">
+<mat-form-field>
+<input type="email"
+placeholder=" Email"
+ matInput
+ formControlName="email"
+ >
+ <mat-error>Please Enter you email</mat-error>
+
+</mat-form-field>
+<mat-form-field>
+<input type="password"
+placeholder="Password"
+matInput
+formControlName="password"
+>
+ <mat-error>Please enter you password</mat-error>
+
+</mat-form-field>
+<button *ngIf="!isLoading" type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">submit</button>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+</form>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <section class="Login-form">
+<form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
+<mat-form-field>
+<input type="email"
+placeholder=" Email"
+ matInput ngModel
+ name="email"
+ email
+ required
+ #emailInput="ngModel">
+ <mat-error *ngIf="emailInput.hasError('required')">Please Enter you email</mat-error>
+ <mat-error *ngIf="!emailInput.hasError('required')">Email is invalid</mat-error>
+</mat-form-field>
+<mat-form-field>
+<input type="password"
+placeholder="Password"
+matInput ngModel
+name="password"
+#pwInput='ngModel'
+required>
+ <mat-error *ngIf="pwInput.hasError('required')">Please enter you password</mat-error>
+<mat-error>Password is incorrect!</mat-error>
+</mat-form-field>
+<button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">submit</button>
+</form>
+</section> -->
